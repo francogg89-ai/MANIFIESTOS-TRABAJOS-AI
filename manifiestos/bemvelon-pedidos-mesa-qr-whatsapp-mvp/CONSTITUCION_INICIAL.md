@@ -3,7 +3,7 @@
 WORK_ID: bemvelon-pedidos-mesa-qr-whatsapp-mvp
 CARRIL: Y
 METHOD_REPO: francogg89-ai/METODO-AI
-METHOD_SHA: 94b7a55d8b023f3204d81ac749bd8ca259b57aa8
+METHOD_SHA: 0f5fd48ae57752419e9e63faa6b69071df966377
 MANIFEST_REPO: francogg89-ai/MANIFIESTOS-TRABAJOS-AI
 MANIFEST_PATH: manifiestos/bemvelon-pedidos-mesa-qr-whatsapp-mvp/MANIFIESTO_TRABAJO.md
 MANIFEST_SHA: 5f479829ab8f4704000048344666f45923e1ddef
@@ -112,17 +112,28 @@ Las decisiones reservadas al humano son las enumeradas en el manifiesto. No exis
 
 ### Estado de la integración de adaptadores
 
-El METHOD_SHA fijado define el contrato de transporte, pero declara expresamente que no incluye adaptadores operativos reales para ChatGPT web ni Claude Code local.
+El METHOD_SHA fijado incluye el host local y los adaptadores descritos en `transporte/LOCAL.md`.
+La prueba de referencia completó un intercambio real ChatGPT web ↔ Claude Code y recuperó
+su respuesta final sin reenviar el mensaje. Eso acredita el mecanismo ensayado, no todas
+las capacidades de la versión reutilizable ni los permisos actuales del carril Y.
 
-Por lo tanto:
+Antes del arranque, el agente local debe verificar:
+- conexión del módulo browser.mjs con las fábricas de pestañas del runtime CUA autorizado;
+- fresh y recuperación current de ambos roles con identidades distintas y explícitas;
+- fidelidad UTF-8, saltos, comillas, rutas Windows y texto largo;
+- captura completa ligada al mensaje esperado y detención ante envío incierto;
+- cwd y origin correctos de work, acceso del auditor a GitHub y permisos de construcción.
 
-- la integración automática ChatGPT web ↔ núcleo ↔ Claude Code no se considera demostrada por esta constitución;
-- no se autoriza afirmar que existe un loop automático conforme únicamente por copiar y pegar prompts;
-- antes de ejecutar el arranque automático deberán identificarse e implementar o aportar adaptadores que cumplan `transporte/ADAPTADORES.md`;
-- esos adaptadores deberán comprobar materialmente, como mínimo, conversación fresh, recuperación de current, fidelidad UTF-8, saltos, comillas, rutas Windows, texto largo, completitud de respuesta y resultado ambiguo de envío;
-- hasta esa comprobación, el trabajo está documentalmente constituido pero el transporte automático queda como precondición técnica pendiente.
+La configuración y el prompt de arranque se preparan en CONTINUIDAD-AI bajo
+`Y/bemvelon-pedidos-mesa-qr-whatsapp-mvp/`. Son instrucciones de transporte, no una
+nueva autoridad sobre el alcance. Los registros runtime permanecen locales fuera de work/audit.
 
-El comando `python -m transporte init` puede materializar el locator sólo después de que esta constitución tenga identidad publicada y se hayan comprobado las precondiciones del host; su ejecución no demuestra por sí misma que los adaptadores reales funcionen.
+Estado: trabajo constituido; arranque preparado; comprobación local de la versión reutilizable
+pendiente. No se ha iniciado Y. El orquestador no crea BOOTSTRAP ni declara aprobadas capacidades
+no verificadas. Las facultades de constructor y auditor definidas arriba permanecen vigentes.
+
+El guardado para renovar coordinadamente los tres agentes no forma parte de esta entrega.
+La recuperación técnica conserva las identidades existentes y no autoriza repetir entregas.
 
 ## Fuentes auxiliares
 
